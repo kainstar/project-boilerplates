@@ -1,0 +1,58 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier",
+    "tslint-eslint-rules"
+  ],
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "build",
+      "dist"
+    ]
+  },
+  "rules": {
+    "curly": true,
+    "semicolon": [true, "always"],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double",
+      "avoid-escape",
+      "avoid-template"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never",
+        "esSpecCompliant": true
+      }
+    ],
+    "ter-indent": [true, 2, {
+      "SwitchCase": 1
+    }],
+    "comment-format": [true, "check-space"],
+    "eofline": true,
+
+    "jsx-no-lambda": false,
+    "jsx-no-bind": false,
+    "jsx-wrap-multiline": true,
+    "jsx-boolean-value": false,
+
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+
+    "member-access": false,
+    "triple-equals": true,
+    "no-empty-interface": false,
+    "one-variable-per-declaration": false,
+    "no-shadowed-variable": false,
+    "only-arrow-functions": false,
+    "no-unused-expression": false,
+    "no-bitwise": false,
+    "no-eval": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es5",
+      "esnext",
+      "dom.iterable",
+      "scripthost"
+    ],
+
+    "moduleResolution": "node",
+    "module": "esnext",
+    "jsx": "react",
+
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+
+    "noEmitHelpers": true,
+    "importHelpers": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "node_modules/**/*.d.ts"
+  ]
+}
