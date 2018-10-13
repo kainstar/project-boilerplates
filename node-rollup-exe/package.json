@@ -1,0 +1,26 @@
+{
+  "name": "node-exe",
+  "version": "1.0.0",
+  "main": "./dist.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rollup -c -w --environment NODE_ENV:development",
+    "build": "rollup -c --environment NODE_ENV:production",
+    "pkg": "pkg ./dist.js --output dist.exe"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "pkg": "^4.3.0",
+    "rollup": "^0.56.5",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.0.0",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-replace": "^2.0.0"
+  },
+  "dependencies": {
+    "chalk": "^2.3.2"
+  }
+}

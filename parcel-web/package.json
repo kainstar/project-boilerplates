@@ -1,0 +1,25 @@
+{
+  "name": "parcel-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "parcel": "parcel watch -d tmp --public-url / ./src/index.html",
+    "dev-server": "browser-sync start --server tmp --port 3000 --files tmp/**/*",
+    "dev": "npm-run-all --parallel parcel dev-server",
+    "build": "rimraf dist && parcel build -d dist --public-url / ./src/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "browser-sync": "^2.23.5",
+    "npm-run-all": "^4.1.2",
+    "parcel-bundler": "^1.4.1",
+    "rimraf": "^2.6.2",
+    "stylus": "^0.54.5"
+  }
+}

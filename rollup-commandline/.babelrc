@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "target": {
+          "node": "current"
+        },
+        "modules": false,
+        "useBuiltIns": "entry"
+      }
+    ]
+  ],
+  "plugins": ["external-helpers"]
+}
