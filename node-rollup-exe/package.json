@@ -1,26 +1,31 @@
 {
   "name": "node-exe",
   "version": "1.0.0",
-  "main": "./dist.js",
+  "main": "./dist/main.js",
   "license": "MIT",
   "scripts": {
     "dev": "rollup -c -w --environment NODE_ENV:development",
     "build": "rollup -c --environment NODE_ENV:production",
-    "pkg": "pkg ./dist.js --output dist.exe"
+    "pkg": "pkg ./dist/main.js --target node8-macos-x64 --output main"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "pkg": "^4.3.0",
-    "rollup": "^0.56.5",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.0.0",
-    "rollup-plugin-eslint": "^4.0.0",
-    "rollup-plugin-node-resolve": "^3.2.0",
-    "rollup-plugin-replace": "^2.0.0"
+    "@types/node": "^12.6.2",
+    "pkg": "^4.4.0",
+    "rollup": "^1.16.7",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.22.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
-    "chalk": "^2.3.2"
+    "chalk": "^2.3.2",
+    "tslib": "^1.10.0"
   }
 }
