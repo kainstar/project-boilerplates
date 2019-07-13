@@ -9,6 +9,7 @@ export interface ICounterProps extends RouteComponentProps<{}> {
   counter: CounterStore;
 }
 
+// @ts-ignore
 @inject<Stores, {}, {}, {}>((store) => {
   return {
     counter: store.counter,

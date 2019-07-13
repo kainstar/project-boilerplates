@@ -1,7 +1,0 @@
-.DS_Store
-dist/*
-build/*
-node_modules/
-npm-debug.log
-npm-debug.log.*
-!.gitkeep

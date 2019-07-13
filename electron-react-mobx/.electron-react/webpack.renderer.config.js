@@ -10,7 +10,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const notPord = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV !== 'production';
 
 /**
  * List of node_modules to include in webpack bundle
@@ -18,7 +18,7 @@ const notPord = process.env.NODE_ENV !== 'production';
  */
 const whiteListedModules = [];
 const styleLoader = [
-  notPord ? {
+  isDev ? {
     // dev style loader
     loader: 'style-loader',
   } : {
@@ -68,7 +68,8 @@ const rendererConfig = {
               modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
+              camelCase: true,
+              localIdentName: '[folder]__[local]__[hash:base64:5]'
             }
           },
           'sass-loader'
@@ -118,8 +119,8 @@ const rendererConfig = {
     ],
   },
   node: {
-    __dirname: notPord,
-    __filename: notPord,
+    __dirname: isDev,
+    __filename: isDev,
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: 'styles.css' }),
@@ -131,7 +132,7 @@ const rendererConfig = {
         removeAttributeQuotes: true,
         removeComments: true,
       },
-      nodeModules: notPord ? path.resolve(__dirname, '../node_modules') : false,
+      nodeModules: isDev ? path.resolve(__dirname, '../node_modules') : false,
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -147,7 +148,7 @@ const rendererConfig = {
   target: 'electron-renderer',
 };
 
-if (notPord) {
+if (isDev) {
   /**
    * Adjust rendererConfig for development settings
    */

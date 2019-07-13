@@ -1,36 +1,34 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, runInAction } from 'mobx';
 
-export class CounterStore {
-  @observable counter = 0;
+export default class CounterStore {
+  @observable num = 0;
 
   @computed
   get nextCounter() {
-    return this.counter + 1;
+    return this.num + 1;
   }
 
   @action
   increment = () => {
-    this.counter++;
+    this.num++;
   }
 
   @action
   incrementIfOdd = () => {
-    if (this.counter % 2) {
-      this.counter++;
+    if (this.num % 2) {
+      this.num++;
     }
   }
 
   @action
   incrementAsync = () => {
     setTimeout(() => {
-      this.counter++;
+      runInAction(() => this.num++);
     }, 1000);
   }
 
   @action
   decrement = () => {
-    this.counter--;
+    this.num--;
   }
 }
-
-export default new CounterStore();

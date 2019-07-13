@@ -5,26 +5,26 @@
  *  environment.
  */
 
-import debug from 'electron-debug';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+import electronDebug from 'electron-debug';
+import installExtension, { REACT_DEVELOPER_TOOLS, MOBX_DEVTOOLS } from 'electron-devtools-installer';
 import { app } from 'electron';
 
-/* eslint-disable */
+// close electron security warnings
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true';
 
 // Install `electron-debug` with `devtron`
-debug({ showDevTools: true });
+electronDebug({ showDevTools: true });
 
 // Install `react-devtools`
 app.on('ready', () => {
-  installExtension(REACT_DEVELOPER_TOOLS)
+  installExtension([REACT_DEVELOPER_TOOLS, MOBX_DEVTOOLS])
     // tslint:disable-next-line:no-empty
     .then(() => {})
     .catch((err: Error) => {
       // tslint:disable-next-line:no-console
-      console.log('Unable to install `react-devtools`: \n', err);
+      console.error('Unable to install `react-devtools`: \n', err);
     });
 });
 
 // Require `main` process to boot app
-// tslint:disable-next-line:no-var-requires
 import('./index');
