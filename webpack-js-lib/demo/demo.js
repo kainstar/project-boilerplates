@@ -1,1 +1,1 @@
-console.log(Lib.version)
+console.log(lib.version);
