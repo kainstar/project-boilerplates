@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "esnext",
-    "lib": ["dom", "es2017", "es2018.promise"],
-    "jsx": "preserve",
+    "module": "commonjs",
+    "lib": ["esnext", "es2018.promise"],
     "strict": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
@@ -13,12 +12,10 @@
     "noUnusedLocals": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmitHelpers": false,
-    "importHelpers": false,
+    "noEmitHelpers": true,
+    "importHelpers": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
     "skipLibCheck": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src", "test"]
 }

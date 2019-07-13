@@ -1,50 +1,46 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import eslint from 'rollup-plugin-eslint'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import replace from 'rollup-plugin-replace'
+import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from 'rollup-plugin-node-resolve';
+import replace from 'rollup-plugin-replace';
+import typescript from 'rollup-plugin-typescript2';
+import autoExternal from 'rollup-plugin-auto-external';
 
-import pkg from './package.json'
+import pkg from './package.json';
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 const plugins = [
-  // eslint检查
-  eslint({
-    throwOnError: true,
-    throwOnWarning: true,
-    include: ['src/**'],
-    exclude: ['node_modules/**']
-  }),
+  autoExternal(),
   // 替换源文件内容
   replace({
     exclude: 'node_modules/**',
     delimiters: ['{{', '}}'],
-    VERSION: pkg.version
+    values: {
+      VERSION: pkg.version,
+    },
   }),
   // 解决第三方模块依赖
-  nodeResolve({
-    jsnext: true,
-    main: true
-  }),
+  nodeResolve(),
   // commonjs转es6模块
   commonjs(),
-  // 解析babel语法
-  babel({
-    exclude: 'node_modules/**'
-  })
-]
+  typescript({
+    tsconfig: 'tsconfig.build.json',
+  }),
+];
 
-const externalModules = Object.keys(pkg.dependencies)
-const entryFile = './src/index.js'
-const destFile = 'dist.js'
+const entryFile = './src/index.ts';
+const destFile = './dist/main.js';
 
-export default {
+/**
+ * @type {import('rollup').RollupWatchOptions}
+ */
+const config = {
   input: entryFile,
   output: {
+    noConflict: true,
     file: destFile,
-    format: 'cjs'
+    format: 'cjs',
   },
-  external: externalModules,
-  plugins: plugins
-}
+  plugins: plugins,
+};
+
+export default config;
