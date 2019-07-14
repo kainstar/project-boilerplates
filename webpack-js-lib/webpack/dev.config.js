@@ -1,5 +1,3 @@
-const path = require('path');
-const webpack = require('webpack');
 const getBaseConfig = require('./base.config');
 const merge = require('webpack-merge');
 const utils = require('./utils');
@@ -14,16 +12,18 @@ module.exports = merge(getBaseConfig(false), {
     quiet: false,
     open: true,
     historyApiFallback: {
-      disableDotRule: true
+      disableDotRule: true,
     },
     watchOptions: {
-      ignored: /node_modules/
-    }
+      ignored: /node_modules/,
+    },
   },
 
-  plugins: [new webpack.NamedModulesPlugin()],
+  optimization: {
+    namedModules: true,
+  },
 
   performance: {
-    hints: false
-  }
+    hints: false,
+  },
 });

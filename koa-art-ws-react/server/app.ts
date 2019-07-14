@@ -21,7 +21,7 @@ app.use(require('koa-static')(path.join(__dirname, '../public')));
 
 // 添加art-template模板引擎支持
 artRender(app, {
-  root: path.join(__dirname, '../views'),
+  root: path.join(__dirname, '../public'),
   extname: '.html',
   debug: process.env.NODE_ENV !== 'production',
 });
